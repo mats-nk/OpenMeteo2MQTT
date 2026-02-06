@@ -15,5 +15,9 @@ mqtt:
   retain: true
   keepalive: 60
 
+units:
+  windspeed: "m/s"
+  temperature: "celsius"
+
 publish:
   interval_seconds: 600
