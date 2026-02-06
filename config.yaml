@@ -1,0 +1,19 @@
+location:
+  latitude: 59.3294    # Stockholm
+  longitude: 18.0687
+
+open_meteo:
+  endpoint: "https://api.open-meteo.com/v1/forecast"
+
+mqtt:
+  broker: "localhost"
+  port: 1883
+  base_topic: "weather/now"
+  client_id: "openmeteo_publisher"
+  username: null
+  password: null
+  retain: true
+  keepalive: 60
+
+publish:
+  interval_seconds: 600
