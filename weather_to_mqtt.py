@@ -7,19 +7,6 @@ import paho.mqtt.client as mqtt
 
 
 # -------------------------------------------------
-# CLI arguments
-# -------------------------------------------------
-parser = argparse.ArgumentParser(description="Publish Open-Meteo weather data to MQTT")
-parser.add_argument(
-    "--windspeed-unit",
-    choices=["ms", "kmh"],
-    default="ms",
-    help="Wind speed unit: ms (m/s) or kmh (km/h). Default: ms"
-)
-args = parser.parse_args()
-
-
-# -------------------------------------------------
 # Load configuration
 # -------------------------------------------------
 with open("config.yaml", "r") as f:
@@ -32,6 +19,8 @@ MQTT_CFG = cfg["mqtt"]
 PUBLISH_INTERVAL = cfg["publish"]["interval_seconds"]
 RETAIN = MQTT_CFG.get("retain", True)
 
+WIND = cfg["units"]["windspeed"]
+
 
 # -------------------------------------------------
 # Open-Meteo URL (unit-aware)
@@ -41,7 +30,7 @@ WEATHER_URL = (
     f'?latitude={LAT}'
     f'&longitude={LON}'
     f'&current_weather=true'
-    f'&windspeed_unit={args.windspeed_unit}'
+    f'&windspeed_unit={WIND}'
 )
 
 
@@ -100,7 +89,6 @@ def publish_weather():
     payload = {
         "temperature": weather.get("temperature"),
         "windspeed": weather.get("windspeed"),
-        "windspeed_unit": args.windspeed_unit,
         "winddirection": weather.get("winddirection"),
         "weathercode": weather.get("weathercode"),
         "time": weather.get("time"),
