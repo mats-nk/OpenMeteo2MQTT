@@ -8,10 +8,10 @@ open_meteo:
 mqtt:
   broker: "localhost"
   port: 1883
-  base_topic: "weather/now"
+  base_topic: "openmeteo/weather"
   client_id: "openmeteo_publisher"
-  username: null
-  password: null
+  username: null   # null or a string
+  password: null   # null or a string
   retain: true
   keepalive: 60
 
@@ -21,3 +21,128 @@ units:
 
 publish:
   interval_seconds: 600
+
+
+air_quality:
+  enabled: true
+
+language:
+  compass: en
+  weather: en
+
+compass:
+  sv:
+    - N
+    - NNO
+    - NO
+    - ONO
+    - O
+    - OSO
+    - SO
+    - SSO
+    - S
+    - SSV
+    - SV
+    - VSV
+    - V
+    - VNV
+    - NV
+    - NNV
+
+  en:
+    - N
+    - NNE
+    - NE
+    - ENE
+    - E
+    - ESE
+    - SE
+    - SSE
+    - S
+    - SSW
+    - SW
+    - WSW
+    - W
+    - WNW
+    - NW
+    - NNW
+
+  de:
+    - N
+    - NNO
+    - NO
+    - ONO
+    - O
+    - OSO
+    - SO
+    - SSO
+    - S
+    - SSW
+    - SW
+    - WSW
+    - W
+    - WNW
+    - NW
+    - NNW
+
+# https://open-meteo.com/en/docs/dwd-api
+weather_code:
+  sv:
+    0: Klart
+    1: Mest klart
+    2: Delvis molnigt
+    3: Mulet
+    45: Dimma
+    48: Rimfrostdimma
+    51: Lätt duggregn
+    53: Måttligt duggregn
+    55: Kraftigt duggregn
+    56: Lätt underkylt duggregn
+    57: Kraftigt underkylt duggregn
+    61: Lätt regn
+    63: Måttligt regn
+    65: Kraftigt regn
+    66: Lätt underkylt regn
+    67: Kraftigt underkylt regn
+    71: Lätt snöfall
+    73: Måttligt snöfall
+    75: Kraftigt snöfall
+    77: Snökorn
+    80: Lätta regnskurar
+    81: Måttliga regnskurar
+    82: Kraftiga regnskurar
+    85: Lätta snöbyar
+    86: Kraftiga snöbyar
+    95: Åska
+    96: Åska med lätt hagel
+    99: Åska med kraftigt hagel
+
+  en:
+    0: Clear sky
+    1: Mainly clear
+    2: Partly cloudy
+    3: Overcast
+    45: Fog
+    48: Depositing rime fog
+    51: Light drizzle
+    53: Moderate drizzle
+    55: Dense drizzle
+    56: Light freezing drizzle
+    57: Dense freezing drizzle
+    61: Slight rain
+    63: Moderate rain
+    65: Heavy rain
+    66: Light freezing rain
+    67: Heavy freezing rain
+    71: Slight snow fall
+    73: Moderate snow fall
+    75: Heavy snow fall
+    77: Snow grains
+    80: Slight rain showers
+    81: Moderate rain showers
+    82: Violent rain showers
+    85: Slight snow showers
+    86: Heavy snow showers
+    95: Thunderstorm
+    96: Thunderstorm with slight hail
+    99: Thunderstorm with heavy hail
